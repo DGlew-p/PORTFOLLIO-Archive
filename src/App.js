@@ -1,68 +1,57 @@
 import "./App.css";
+
 import React from "react";
-import { Routes,
-          Route,
-        } from 'react-router-dom';
+import { Routes, Route } from "react-router-dom";
 import Header from "./components/header/header";
 import Footer from "./components/footer/footer";
-import Contact from"./pages/contact/contact";
+import Contact from "./pages/contact/contact";
 import Skills from "./pages/skills/skills";
 import Portfolio from "./pages/portfolio/portfolio";
-import Future from "./pages/future/future";
 import About from "./pages/about/about";
 
 class App extends React.Component {
   state = {
-      data: null
-    };
-  
-    componentDidMount() {
-        // Call our fetch function below once the component mounts
-      this.callBackendAPI()
-        .then(res => this.setState({ data: res.express }))
-        .catch(err => console.log(err));
+    data: null,
+  };
+
+  componentDidMount() {
+    // Call our fetch function below once the component mounts
+    this.callBackendAPI()
+      .then((res) => this.setState({ data: res.express }))
+      .catch((err) => console.log(err));
+  }
+  // Fetches our GET route from the Express server. (Note the route we are fetching matches the GET route from server.js
+  callBackendAPI = async () => {
+    const response = await fetch("/express_backend");
+    const body = await response.json();
+
+    if (response.status !== 200) {
+      throw Error(body.message);
     }
-      // Fetches our GET route from the Express server. (Note the route we are fetching matches the GET route from server.js
-    callBackendAPI = async () => {
-      const response = await fetch('/express_backend');
-      const body = await response.json();
-  
-      if (response.status !== 200) {
-        throw Error(body.message) 
-      }
-      return body;
-    };
-  
-    render() {
-      return (
+    return body;
+  };
+
+  render() {
+    return (
       <div className="App">
-<Header/>
+        <Header />
 
+        <Routes>
+          <Route path="/about" element={<About />} />
 
-<Routes>
+          <Route path="/skills" element={<Skills />} />
 
-<Route path='/about' element={<About/>}/>
+          <Route path="/portfolio" element={<Portfolio />} />
 
-<Route path='/skills' element={<Skills />}/>
+          <Route path="/contact" element={<Contact />} />
 
-<Route path='/portfolio' element={<Portfolio />}/>
+          <Route path="*" element={<About />} />
+        </Routes>
 
-<Route path='/future' element={ <Future /> }/>
-
-<Route path='/contact' element={<Contact />}/>
-
-<Route
-      path="*"
-      element={<About/>}
-    />
-
-</Routes>
-
-<Footer/>
+        <Footer />
       </div>
     );
   }
 }
-
 
 export default App;
