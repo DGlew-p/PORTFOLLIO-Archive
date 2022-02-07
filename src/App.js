@@ -3,7 +3,6 @@ import "./App.css";
 import React from "react";
 import { Routes, Route } from "react-router-dom";
 import Header from "./components/header/header";
-import Footer from "./components/footer/footer";
 import Contact from "./pages/contact/contact";
 import Skills from "./pages/skills/skills";
 import Portfolio from "./pages/portfolio/portfolio";
@@ -47,8 +46,6 @@ class App extends React.Component {
 
           <Route path="*" element={<About />} />
         </Routes>
-
-        <Footer />
       </div>
     );
   }
