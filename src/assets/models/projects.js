@@ -29,7 +29,7 @@ export let projects = [
     image: cardImg2,
     info: `A 5 Button memory procession attempting to be engaging and rewarding while minimizing the frustration augmenting aspects of similar games. In the current state a "Win" can be achieved after 7 rounds.`,
     stack: "HTML CSS JavaScript",
-    gitLink: "",
+    gitLink: "https://github.com/DGlew-p/Project-01",
     depLink: "https://dglew-p.github.io/Project-01/",
   },
 ];

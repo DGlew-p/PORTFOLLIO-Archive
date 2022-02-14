@@ -16,7 +16,7 @@ export default function Skills(props) {
         sx={{
           display: "flex",
           flexDirection: "column",
-          flexWrap: "wrap",
+
           justifyContent: "center",
           alignItems: "center",
           alignContent: "stretch",

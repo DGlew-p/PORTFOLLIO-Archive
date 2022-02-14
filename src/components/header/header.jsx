@@ -15,34 +15,27 @@ import { HistoryEdu, GitHub, LinkedIn, Mail } from "@mui/icons-material";
 import DrawerComponent from "../drawer/drawer.jsx";
 import { makeStyles } from "@material-ui/core/styles";
 import CVPdf from "../../assets/img/CDPdf.pdf";
+import { grey } from "@mui/material/colors";
 
 const useStyles = makeStyles((theme) => ({
-  navlinks: {
-    marginLeft: theme.spacing(1),
-    display: "flex",
-  },
   logo: {
     flexGrow: "1",
-    cursor: "pointer",
+    cursor: "default",
   },
   link: {
     textDecoration: "none",
-    color: "white",
+    color: grey[100],
     fontSize: "20px",
     marginLeft: theme.spacing(10),
     "&:hover": {
-      color: "yellow",
       borderBottom: "1px solid white",
     },
   },
 
-  buttonLink: {
-    textDecoration: "none",
-    color: "white",
-    fontSize: "20px",
+  iconLink: {
+    color: grey[100],
     marginLeft: theme.spacing(1),
     "&:hover": {
-      color: "yellow",
       borderBottom: "1px solid white",
     },
   },
@@ -86,12 +79,8 @@ export default function Header(props) {
                   target="_blank"
                   rel="noreferrer"
                 >
-                  <IconButton
-                    size="large"
-                    color="inherit"
-                    className={classes.buttonLink}
-                  >
-                    <LinkedIn />
+                  <IconButton size="large">
+                    <LinkedIn className={classes.iconLink} />
                   </IconButton>
                 </a>
                 <a
@@ -99,22 +88,14 @@ export default function Header(props) {
                   target="_blank"
                   rel="noreferrer"
                 >
-                  <IconButton
-                    size="large"
-                    color="inherit"
-                    className={classes.buttonLink}
-                  >
-                    <GitHub />
+                  <IconButton size="large">
+                    <GitHub className={classes.iconLink} />
                   </IconButton>
                 </a>
+
                 <a href={CVPdf} target="_blank" rel="noreferrer">
-                  <IconButton
-                    size="large"
-                    aria-label=""
-                    color="inherit"
-                    className={classes.buttonLink}
-                  >
-                    <HistoryEdu />
+                  <IconButton size="large" aria-label="">
+                    <HistoryEdu className={classes.iconLink} />
                   </IconButton>
                 </a>
               </div>

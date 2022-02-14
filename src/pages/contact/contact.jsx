@@ -1,26 +1,45 @@
 import React from "react";
-import "./contact.css";
 import axios from "axios";
-import { Button, TextField, CircularProgress } from "@mui/material";
-import {} from "@mui/base";
+import {
+  Button,
+  TextField,
+  CircularProgress,
+  Box,
+  Card,
+  Paper,
+  Dialog,
+} from "@mui/material";
+import { minWidth } from "@mui/system";
 
 export default class extends React.Component {
   constructor(props) {
     super(props);
+    this.dialogClose = () => {
+      this.setState({ hideDialog: false });
+    };
+    this.onOverlayClick = () => {
+      this.setState({ hideDialog: false });
+    };
     this.state = {
       name: "",
       message: "",
       email: "",
       loading: false,
       errorCount: null,
+      hideDialog: true,
       errors: {
-        name: "Please enter your name!",
-        email: "Please enter a valid Email!",
-        message: "Please leave me a message!",
+        name: "Enter your name",
+        email: "Enter a valid Email",
+        message: "Please leave a message",
       },
     };
+
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+  }
+  handleClick() {
+    this.setState({ hideDialog: true });
+    this.resetForm();
   }
 
   handleSubmit = (event) => {
@@ -38,12 +57,16 @@ export default class extends React.Component {
       },
     }).then((response) => {
       if (response.data.msg === "success") {
+        // this.setState({ hideDialog: false, });
         this.setState({
+          hideDialog: false,
           loading: false,
         });
-        alert("Email Received, Thank you!");
-        this.resetForm();
       } else if (response.data.msg === "fail") {
+        this.setState({
+          loading: false,
+          hideDialog: false,
+        });
         alert("Oops, something went wrong. Try again");
       }
     });
@@ -92,88 +115,133 @@ export default class extends React.Component {
 
     if (this.state.loading) {
       return (
-        <div>
-          <CircularProgress color="inherit"></CircularProgress>
-        </div>
+        <Box>
+          <CircularProgress
+            color="inherit"
+            style={{ padding: 1, margin: 300 }}
+          ></CircularProgress>
+        </Box>
       );
     } else
       return (
-        <div>
-          <form className="mailing">
-            {/* <h1>Please Get In Touch</h1> */}
-            <div>
-              <TextField
-                style={{ width: 250, padding: 5, margin: 5 }}
-                name="name"
-                placeholder="Name"
-                maxLength="30"
-                required
-                value={this.state.name}
-                onChange={this.handleChange}
-              />
-              <br />
-              {errors.name.length > 0 ? (
-                <span className="error">{errors.name}</span>
-              ) : (
-                <span></span>
-              )}
-              <br />
-              <TextField
-                style={{ width: 250, padding: 5, margin: 5 }}
-                name="email"
-                placeholder="Email"
-                maxLength="30"
-                required
-                value={this.state.email}
-                onChange={this.handleChange}
-              />
-              <br />
-              <span className="error">{errors.email}</span>
-              <br />
-              <TextField
-                multiline
-                id="filled-multiline-static"
-                rows={4}
-                style={{ width: 250, padding: 5, margin: 5 }}
-                name="message"
-                placeholder="Message"
-                maxLength="500"
-                required
-                value={this.state.message}
-                onChange={this.handleChange}
-              />
-              <br />
-              <span className="error">{errors.message}</span>
-              <br />
-            </div>
+        <>
+          <Dialog
+            width="250px"
+            isModal={true}
+            target="#dialog-target"
+            visible={this.state.hideDialog}
+            close={this.dialogClose}
+            overlayClick={this.onOverlayClick}
+          >
+            This is a modal Dialog
+          </Dialog>
+          <Box
+            display="flex"
+            height="100%"
+            justifyContent="center"
+            alignItems="center"
+          >
+            <Paper
+              style={{ padding: 2, margin: 40, minWidth: 250 }}
+              sx={{ width: "50%" }}
+            >
+              <form className="mailing">
+                <Box
+                  display="flex"
+                  sx={{ flexDirection: "column" }}
+                  height="100%"
+                  justifyContent="center"
+                  alignItems="center"
+                >
+                  <h1>Get In Touch</h1>
 
-            {this.state.errorCount === 0 ? (
-              <Button
-                style={{ padding: 5, margin: 5 }}
-                variant="contained"
-                type="button"
-                value="Submit"
-                className="btn btn--submit"
-                onClick={this.handleSubmit}
-              >
-                SEND
-              </Button>
-            ) : (
-              <Button
-                style={{ padding: 5, margin: 5 }}
-                variant="contained"
-                type="button"
-                value="Submit"
-                className="btn btn--submit"
-                disabled
-                onClick={this.handleSubmit}
-              >
-                SEND
-              </Button>
-            )}
-          </form>
-          <br />
-        </div>
+                  <TextField
+                    className="textarea"
+                    style={{ padding: 1, margin: 20 }}
+                    sx={{ width: "60%" }}
+                    name="name"
+                    placeholder="Name"
+                    maxLength="30"
+                    required
+                    value={this.state.name}
+                    onChange={this.handleChange}
+                  />
+
+                  {errors.name.length > 0 ? (
+                    <span className="error">{errors.name}</span>
+                  ) : (
+                    <br />
+                  )}
+
+                  <TextField
+                    style={{ padding: 1, margin: 20 }}
+                    sx={{ width: "60%" }}
+                    name="email"
+                    placeholder="Email"
+                    maxLength="30"
+                    required
+                    value={this.state.email}
+                    onChange={this.handleChange}
+                  />
+
+                  {errors.email.length > 0 ? (
+                    <span className="error">{errors.email}</span>
+                  ) : (
+                    <br />
+                  )}
+
+                  <TextField
+                    sx={{ width: "60%" }}
+                    multiline
+                    id="filled-multiline-static"
+                    rows={4}
+                    style={{ padding: 1, margin: 20 }}
+                    name="message"
+                    placeholder="Message"
+                    maxLength="500"
+                    required
+                    value={this.state.message}
+                    onChange={this.handleChange}
+                  />
+
+                  {errors.message.length > 0 ? (
+                    <span className="error">{errors.message}</span>
+                  ) : (
+                    <br />
+                  )}
+
+                  {this.state.errorCount === 0 ? (
+                    <Button
+                      isActive="false"
+                      sx={{ width: "30%", color: "primary" }}
+                      style={{ padding: 1, margin: 20 }}
+                      variant="contained"
+                      type="button"
+                      value="Submit"
+                      className="btn btn--submit"
+                      onClick={this.handleSubmit}
+                    >
+                      SEND
+                    </Button>
+                  ) : (
+                    <Button
+                      style={{ padding: 1, margin: 20 }}
+                      sx={{ width: "10%" }}
+                      variant="contained"
+                      type="button"
+                      value="Submit"
+                      className="btn btn--submit"
+                      disabled
+                      onClick={this.handleSubmit}
+                    >
+                      SEND
+                    </Button>
+                  )}
+                </Box>
+              </form>
+            </Paper>
+          </Box>
+        </>
       );
   }
 
@@ -185,9 +253,9 @@ export default class extends React.Component {
       loading: false,
       errorCount: null,
       errors: {
-        name: "Please enter your name!",
-        email: "Please enter a valid Email!",
-        message: "Please leave me a message!",
+        name: "Enter your name",
+        email: "Enter a valid Email",
+        message: "Please leave a message",
       },
     });
   }

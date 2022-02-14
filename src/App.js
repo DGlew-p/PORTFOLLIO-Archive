@@ -9,10 +9,6 @@ import Portfolio from "./pages/portfolio/portfolio";
 import About from "./pages/about/about";
 
 class App extends React.Component {
-  state = {
-    data: null,
-  };
-
   componentDidMount() {
     // Call our fetch function below once the component mounts
     this.callBackendAPI()
@@ -31,6 +27,7 @@ class App extends React.Component {
   };
 
   render() {
+    const { ...other } = this.props;
     return (
       <div className="App">
         <Header />
