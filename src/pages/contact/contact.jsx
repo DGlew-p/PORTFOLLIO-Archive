@@ -5,11 +5,10 @@ import {
   TextField,
   CircularProgress,
   Box,
-  Card,
   Paper,
   Dialog,
 } from "@mui/material";
-import { minWidth } from "@mui/system";
+// import { minWidth } from "@mui/system";
 
 export default class extends React.Component {
   constructor(props) {
@@ -84,15 +83,13 @@ export default class extends React.Component {
 
     switch (name) {
       case "name":
-        errors.name = value.length < 5 ? "Please enter your name!" : "";
+        errors.name = value.length < 5 ? "Enter your name" : "";
         break;
       case "email":
-        errors.email = validEmailRegex.test(value)
-          ? ""
-          : "Please enter a valid Email!";
+        errors.email = validEmailRegex.test(value) ? "" : "Enter a valid Email";
         break;
       case "message":
-        errors.message = value.length < 5 ? "Please leave me a message!" : "";
+        errors.message = value.length < 5 ? "Please leave a message" : "";
         break;
       default:
         break;
@@ -142,7 +139,7 @@ export default class extends React.Component {
             alignItems="center"
           >
             <Paper
-              style={{ padding: 2, margin: 40, minWidth: 250 }}
+              style={{ padding: 2, margin: 30, minWidth: 250 }}
               sx={{ width: "50%" }}
             >
               <form className="mailing">
@@ -157,7 +154,7 @@ export default class extends React.Component {
 
                   <TextField
                     className="textarea"
-                    style={{ padding: 1, margin: 20 }}
+                    style={{ padding: 1, margin: 15 }}
                     sx={{ width: "60%" }}
                     name="name"
                     placeholder="Name"
@@ -174,7 +171,7 @@ export default class extends React.Component {
                   )}
 
                   <TextField
-                    style={{ padding: 1, margin: 20 }}
+                    style={{ padding: 1, margin: 15 }}
                     sx={{ width: "60%" }}
                     name="email"
                     placeholder="Email"
@@ -195,7 +192,7 @@ export default class extends React.Component {
                     multiline
                     id="filled-multiline-static"
                     rows={4}
-                    style={{ padding: 1, margin: 20 }}
+                    style={{ padding: 1, margin: 15 }}
                     name="message"
                     placeholder="Message"
                     maxLength="500"
@@ -214,7 +211,7 @@ export default class extends React.Component {
                     <Button
                       isActive="false"
                       sx={{ width: "30%", color: "primary" }}
-                      style={{ padding: 1, margin: 20 }}
+                      style={{ padding: 1, margin: 15 }}
                       variant="contained"
                       type="button"
                       value="Submit"
@@ -225,7 +222,7 @@ export default class extends React.Component {
                     </Button>
                   ) : (
                     <Button
-                      style={{ padding: 1, margin: 20 }}
+                      style={{ padding: 1, margin: 15 }}
                       sx={{ width: "10%" }}
                       variant="contained"
                       type="button"

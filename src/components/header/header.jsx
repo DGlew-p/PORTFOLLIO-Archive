@@ -52,9 +52,6 @@ export default function Header(props) {
         <Box sx={{ flexGrow: 1 }}>
           <CssBaseline />
           <Toolbar>
-            <Typography variant="h4" className={classes.logo}>
-              Navbar
-            </Typography>
             {isMobile ? (
               <DrawerComponent />
             ) : (
@@ -69,7 +66,6 @@ export default function Header(props) {
                   Skills
                 </NavLink>
                 <NavLink to="/contact" className={classes.link}>
-                  Connect
                   <IconButton size="large" color="inherit">
                     <Mail />
                   </IconButton>

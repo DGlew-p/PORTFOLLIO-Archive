@@ -57,7 +57,6 @@ function DrawerComponent() {
           <ListItem onClick={() => setOpenDrawer(false)}>
             <ListItemText>
               <NavLink to="/contact" className={classes.NavLink}>
-                Connect
                 <IconButton size="large" color="inherit">
                   <Mail />
                 </IconButton>
