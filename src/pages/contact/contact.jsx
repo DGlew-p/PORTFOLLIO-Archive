@@ -1,4 +1,8 @@
 import React from "react";
+
+import EmailGood from "../../components/emailMsg/emailgood";
+import EmailBad from "../../components/emailMsg/emailbad";
+import EmailDefault from "../../components/emailMsg/emaildefault";
 import axios from "axios";
 import {
   Button,
@@ -6,19 +10,23 @@ import {
   CircularProgress,
   Box,
   Paper,
-  Dialog,
+  Typography,
 } from "@mui/material";
-// import { minWidth } from "@mui/system";
+
+const enomObj = {
+  true: <EmailGood />,
+  false: <EmailBad />,
+  null: <EmailDefault />,
+};
+
+function Enum({ state }) {
+  return <div>{enomObj[state]}</div>;
+}
 
 export default class extends React.Component {
   constructor(props) {
     super(props);
-    this.dialogClose = () => {
-      this.setState({ hideDialog: false });
-    };
-    this.onOverlayClick = () => {
-      this.setState({ hideDialog: false });
-    };
+
     this.state = {
       name: "",
       message: "",
@@ -26,6 +34,8 @@ export default class extends React.Component {
       loading: false,
       errorCount: null,
       hideDialog: true,
+      emailSuccess: null,
+
       errors: {
         name: "Enter your name",
         email: "Enter a valid Email",
@@ -35,10 +45,6 @@ export default class extends React.Component {
 
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
-  }
-  handleClick() {
-    this.setState({ hideDialog: true });
-    this.resetForm();
   }
 
   handleSubmit = (event) => {
@@ -56,17 +62,11 @@ export default class extends React.Component {
       },
     }).then((response) => {
       if (response.data.msg === "success") {
-        // this.setState({ hideDialog: false, });
-        this.setState({
-          hideDialog: false,
-          loading: false,
-        });
+        this.emailSuccess();
+        this.resetForm();
       } else if (response.data.msg === "fail") {
-        this.setState({
-          loading: false,
-          hideDialog: false,
-        });
-        alert("Oops, something went wrong. Try again");
+        this.emailBad();
+        this.resetForm();
       }
     });
   };
@@ -104,142 +104,23 @@ export default class extends React.Component {
       return count;
     };
 
-    this.setState({ errorCount: countErrors(this.state.errors) });
+    this.setState({
+      errorCount: countErrors(this.state.errors),
+      emailSuccess: null,
+    });
   }
 
-  ifLoading() {
-    const { errors } = this.state;
-
-    if (this.state.loading) {
-      return (
-        <Box>
-          <CircularProgress
-            color="inherit"
-            style={{ padding: 1, margin: 300 }}
-          ></CircularProgress>
-        </Box>
-      );
-    } else
-      return (
-        <>
-          <Dialog
-            width="250px"
-            isModal={true}
-            target="#dialog-target"
-            visible={this.state.hideDialog}
-            close={this.dialogClose}
-            overlayClick={this.onOverlayClick}
-          >
-            This is a modal Dialog
-          </Dialog>
-          <Box
-            display="flex"
-            height="100%"
-            justifyContent="center"
-            alignItems="center"
-          >
-            <Paper
-              style={{ padding: 2, margin: 30, minWidth: 250 }}
-              sx={{ width: "50%" }}
-            >
-              <form className="mailing">
-                <Box
-                  display="flex"
-                  sx={{ flexDirection: "column" }}
-                  height="100%"
-                  justifyContent="center"
-                  alignItems="center"
-                >
-                  <h1>Get In Touch</h1>
-
-                  <TextField
-                    className="textarea"
-                    style={{ padding: 1, margin: 15 }}
-                    sx={{ width: "60%" }}
-                    name="name"
-                    placeholder="Name"
-                    maxLength="30"
-                    required
-                    value={this.state.name}
-                    onChange={this.handleChange}
-                  />
-
-                  {errors.name.length > 0 ? (
-                    <span className="error">{errors.name}</span>
-                  ) : (
-                    <br />
-                  )}
-
-                  <TextField
-                    style={{ padding: 1, margin: 15 }}
-                    sx={{ width: "60%" }}
-                    name="email"
-                    placeholder="Email"
-                    maxLength="30"
-                    required
-                    value={this.state.email}
-                    onChange={this.handleChange}
-                  />
-
-                  {errors.email.length > 0 ? (
-                    <span className="error">{errors.email}</span>
-                  ) : (
-                    <br />
-                  )}
-
-                  <TextField
-                    sx={{ width: "60%" }}
-                    multiline
-                    id="filled-multiline-static"
-                    rows={4}
-                    style={{ padding: 1, margin: 15 }}
-                    name="message"
-                    placeholder="Message"
-                    maxLength="500"
-                    required
-                    value={this.state.message}
-                    onChange={this.handleChange}
-                  />
-
-                  {errors.message.length > 0 ? (
-                    <span className="error">{errors.message}</span>
-                  ) : (
-                    <br />
-                  )}
-
-                  {this.state.errorCount === 0 ? (
-                    <Button
-                      isActive="false"
-                      sx={{ width: "30%", color: "primary" }}
-                      style={{ padding: 1, margin: 15 }}
-                      variant="contained"
-                      type="button"
-                      value="Submit"
-                      className="btn btn--submit"
-                      onClick={this.handleSubmit}
-                    >
-                      SEND
-                    </Button>
-                  ) : (
-                    <Button
-                      style={{ padding: 1, margin: 15 }}
-                      sx={{ width: "10%" }}
-                      variant="contained"
-                      type="button"
-                      value="Submit"
-                      className="btn btn--submit"
-                      disabled
-                      onClick={this.handleSubmit}
-                    >
-                      SEND
-                    </Button>
-                  )}
-                </Box>
-              </form>
-            </Paper>
-          </Box>
-        </>
-      );
+  emailSuccess() {
+    this.setState({
+      loading: false,
+      emailSuccess: true,
+    });
+  }
+  emailBad() {
+    this.setState({
+      loading: false,
+      emailSuccess: false,
+    });
   }
 
   resetForm() {
@@ -255,6 +136,124 @@ export default class extends React.Component {
         message: "Please leave a message",
       },
     });
+  }
+
+  ifLoading() {
+    const { errors } = this.state;
+
+    if (this.state.loading) {
+      return (
+        <Box
+          height="100%"
+          width="100%"
+          justifyContent="center"
+          alignItems="center"
+        >
+          <CircularProgress color="primary"></CircularProgress>
+        </Box>
+      );
+    } else
+      return (
+        <>
+          <form className="mailing">
+            <Box
+              display="flex"
+              sx={{ flexDirection: "column" }}
+              height="100%"
+              width="100%"
+              justifyContent="center"
+              alignItems="center"
+            >
+              <Typography component="div" variant="h4">
+                <Enum state={this.state.emailSuccess}></Enum>
+              </Typography>
+
+              <TextField
+                className="textarea"
+                style={{ padding: 1, margin: 15 }}
+                sx={{ width: "30%", minWidth: 300 }}
+                name="name"
+                placeholder="Name"
+                maxLength="30"
+                required
+                value={this.state.name}
+                onChange={this.handleChange}
+              />
+
+              {errors.name.length > 0 ? (
+                <span className="error">{errors.name}</span>
+              ) : (
+                <br />
+              )}
+
+              <TextField
+                style={{ padding: 1, margin: 15 }}
+                sx={{ width: "30%", minWidth: 300 }}
+                name="email"
+                placeholder="Email"
+                maxLength="30"
+                required
+                value={this.state.email}
+                onChange={this.handleChange}
+              />
+
+              {errors.email.length > 0 ? (
+                <span className="error">{errors.email}</span>
+              ) : (
+                <br />
+              )}
+
+              <TextField
+                sx={{ width: "30%", minWidth: 300 }}
+                multiline
+                id="filled-multiline-static"
+                rows={4}
+                style={{ padding: 1, margin: 15 }}
+                name="message"
+                placeholder="Message"
+                maxLength="500"
+                required
+                value={this.state.message}
+                onChange={this.handleChange}
+              />
+
+              {errors.message.length > 0 ? (
+                <span className="error">{errors.message}</span>
+              ) : (
+                <br />
+              )}
+
+              {this.state.errorCount === 0 ? (
+                <Button
+                  isActive="false"
+                  sx={{ width: "30%", minWidth: 300, color: "primary" }}
+                  style={{ padding: 1, margin: 15 }}
+                  variant="contained"
+                  type="button"
+                  value="Submit"
+                  className="btn btn--submit"
+                  onClick={this.handleSubmit}
+                >
+                  SEND
+                </Button>
+              ) : (
+                <Button
+                  style={{ padding: 1, margin: 15 }}
+                  sx={{ width: "10%" }}
+                  variant="contained"
+                  type="button"
+                  value="Submit"
+                  className="btn btn--submit"
+                  disabled
+                  onClick={this.handleSubmit}
+                >
+                  SEND
+                </Button>
+              )}
+            </Box>
+          </form>
+        </>
+      );
   }
 
   render() {

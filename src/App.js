@@ -7,6 +7,8 @@ import Contact from "./pages/contact/contact";
 import Skills from "./pages/skills/skills";
 import Portfolio from "./pages/portfolio/portfolio";
 import About from "./pages/about/about";
+import Footer from "./components/footer/footer";
+import { CssBaseline } from "@mui/material";
 
 class App extends React.Component {
   componentDidMount() {
@@ -30,6 +32,7 @@ class App extends React.Component {
     const { ...other } = this.props;
     return (
       <div className="App">
+        <CssBaseline />
         <Header />
 
         <Routes>
@@ -43,6 +46,7 @@ class App extends React.Component {
 
           <Route path="*" element={<About />} />
         </Routes>
+        <Footer />
       </div>
     );
   }

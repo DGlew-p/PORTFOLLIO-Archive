@@ -5,39 +5,55 @@ import {
   Typography,
   AppBar,
   Toolbar,
-  CssBaseline,
-  IconButton,
   useTheme,
   useMediaQuery,
+  Link,
+  IconButton,
+  Grid,
 } from "@mui/material";
-
-import { HistoryEdu, GitHub, LinkedIn, Mail } from "@mui/icons-material";
 import DrawerComponent from "../drawer/drawer.jsx";
+
 import { makeStyles } from "@material-ui/core/styles";
+import { HistoryEdu, GitHub, LinkedIn, Mail } from "@mui/icons-material";
 import CVPdf from "../../assets/img/CDPdf.pdf";
 import { grey } from "@mui/material/colors";
 
 const useStyles = makeStyles((theme) => ({
-  logo: {
-    flexGrow: "1",
-    cursor: "default",
-  },
   link: {
     textDecoration: "none",
     color: grey[100],
     fontSize: "20px",
-    marginLeft: theme.spacing(10),
+
     "&:hover": {
       borderBottom: "1px solid white",
     },
   },
-
+  logo: {
+    width: 135,
+    height: 43.54,
+  },
   iconLink: {
     color: grey[100],
+
     marginLeft: theme.spacing(1),
-    "&:hover": {
-      borderBottom: "1px solid white",
-    },
+  },
+  topog: {
+    color: grey[100],
+
+    marginLeft: theme.spacing(1),
+    "&:hover": { cursor: "default" },
+  },
+  linkTopog: {
+    color: grey[100],
+
+    marginLeft: theme.spacing(1),
+  },
+
+  navLink: {
+    color: grey[100],
+    textDecoration: "none",
+    marginLeft: theme.spacing(1),
+    "&:hover": { borderBottom: "1px solid white" },
   },
 }));
 
@@ -48,15 +64,100 @@ export default function Header(props) {
 
   return (
     <React.Fragment>
-      <AppBar position="static">
-        <Box sx={{ flexGrow: 1 }}>
-          <CssBaseline />
-          <Toolbar>
-            {isMobile ? (
-              <DrawerComponent />
-            ) : (
-              <div>
-                <NavLink to="/about" className={classes.link}>
+      <AppBar
+        position="sticky"
+        color="primary"
+        sx={{ top: 0, bottom: "auto", m: "1", p: "2" }}
+      >
+        <Toolbar>
+          {isMobile ? (
+            <>
+              <Grid
+                container
+                display="flex"
+                justifyContent="space-around"
+                alignItems="center"
+                width="100%"
+              >
+                <DrawerComponent />
+
+                <NavLink
+                  to="/about"
+                  className={classes.link}
+                  sx={{ justifyContent: "center" }}
+                >
+                  <Typography
+                    className={classes.topog}
+                    sx={{ m: "1", p: "2" }}
+                    variant="h6"
+                  >
+                    DG
+                  </Typography>
+                </NavLink>
+                <NavLink to="/contact" className={classes.navLink}>
+                  <IconButton size="large" color="inherit">
+                    <Mail className={classes.iconLink} />
+                  </IconButton>
+                </NavLink>
+                <Link
+                  className={classes.navLink}
+                  href="https://www.linkedin.com/in/darren-glew/"
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  <IconButton size="large">
+                    <LinkedIn className={classes.iconLink} />
+                  </IconButton>
+                </Link>
+                <Link
+                  className={classes.navLink}
+                  href="https://github.com/DGlew-p"
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  <IconButton size="large">
+                    <GitHub className={classes.iconLink} />
+                  </IconButton>
+                </Link>
+                <Link
+                  className={classes.navLink}
+                  href={CVPdf}
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  <IconButton size="large" aria-label="">
+                    <HistoryEdu className={classes.iconLink} />
+                  </IconButton>
+                </Link>
+              </Grid>
+            </>
+          ) : (
+            <>
+              <NavLink
+                to="/about"
+                className={classes.link}
+                sx={{ justifyContent: "center" }}
+              >
+                <Typography
+                  className={classes.topog}
+                  sx={{ m: "10", p: "2" }}
+                  variant="h6"
+                >
+                  DG
+                </Typography>
+              </NavLink>
+              <Box
+                display="flex"
+                sx={{ justifyContent: "space-evenly", alignItems: "center" }}
+                width="100%"
+                height="100%"
+                style={{ p: 1, m: 1 }}
+              >
+                <NavLink
+                  to="/about"
+                  className={classes.link}
+                  sx={{ justifyContent: "center" }}
+                >
                   About
                 </NavLink>
                 <NavLink to="/portfolio" className={classes.link}>
@@ -65,40 +166,12 @@ export default function Header(props) {
                 <NavLink to="/skills" className={classes.link}>
                   Skills
                 </NavLink>
-                <NavLink to="/contact" className={classes.link}>
-                  <IconButton size="large" color="inherit">
-                    <Mail />
-                  </IconButton>
-                </NavLink>
-                <a
-                  href="https://www.linkedin.com/in/darren-glew/"
-                  target="_blank"
-                  rel="noreferrer"
-                >
-                  <IconButton size="large">
-                    <LinkedIn className={classes.iconLink} />
-                  </IconButton>
-                </a>
-                <a
-                  href="https://github.com/DGlew-p"
-                  target="_blank"
-                  rel="noreferrer"
-                >
-                  <IconButton size="large">
-                    <GitHub className={classes.iconLink} />
-                  </IconButton>
-                </a>
-
-                <a href={CVPdf} target="_blank" rel="noreferrer">
-                  <IconButton size="large" aria-label="">
-                    <HistoryEdu className={classes.iconLink} />
-                  </IconButton>
-                </a>
-              </div>
-            )}
-          </Toolbar>
-        </Box>
+              </Box>
+            </>
+          )}
+        </Toolbar>
       </AppBar>
+      <Toolbar />
     </React.Fragment>
   );
 }

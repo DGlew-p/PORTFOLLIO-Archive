@@ -33,3 +33,83 @@ export let projects = [
     depLink: "https://dglew-p.github.io/Project-01/",
   },
 ];
+
+export let skills = [
+  {
+    id: "0",
+    pSkill: "JavaScript",
+    image: cardImg0,
+  },
+  {
+    id: "1",
+    pSkill: "REACTjs",
+    image: cardImg0,
+  },
+  {
+    id: "2",
+    pSkill: "NodeJS",
+    image: cardImg0,
+  },
+  {
+    id: "3",
+    pSkill: "Python",
+    image: cardImg0,
+  },
+  {
+    id: "4",
+    pSkill: "Django",
+    image: cardImg0,
+  },
+  {
+    id: "5",
+    pSkill: "PostgreSQL",
+    image: cardImg0,
+  },
+  {
+    id: "6",
+    pSkill: "ExpressJS",
+    image: cardImg0,
+  },
+  {
+    id: "7",
+    pSkill: "mongoDB",
+    image: cardImg0,
+  },
+
+  {
+    id: "8",
+    pSkill: "HTML",
+    image: cardImg0,
+  },
+  {
+    id: "9",
+    pSkill: "CSS",
+    image: cardImg0,
+  },
+  {
+    id: "15",
+    pSkill: "Material-UI",
+    image: cardImg0,
+  },
+  {
+    id: "10",
+    pSkill: "Linux CLI",
+    image: cardImg0,
+  },
+
+  {
+    id: "16",
+    pSkill: "Git / Git-Hu",
+    image: cardImg0,
+  },
+  {
+    id: "11",
+    pSkill: "Agile / SCRUM ",
+    image: cardImg0,
+  },
+  {
+    id: "12",
+    pSkill: "Integration with Google + AWS APIs",
+    image: cardImg0,
+  },
+];
