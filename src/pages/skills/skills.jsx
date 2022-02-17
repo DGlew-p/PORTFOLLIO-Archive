@@ -4,13 +4,6 @@ import { Grid, Paper, Box, Card, Typography } from "@mui/material";
 import { skills } from "../../assets/models/projects";
 import SkillsItem from "../../components/skillsItem/skillsItem";
 
-const Item = styled(Paper)(({ theme }) => ({
-  ...theme.typography.body2,
-  padding: theme.spacing(1),
-  textAlign: "center",
-  color: theme.palette.text.secondary,
-}));
-
 export default function Skills(props) {
   return (
     <Box
@@ -20,10 +13,14 @@ export default function Skills(props) {
         alignItems: "center",
         flexWrap: "wrap",
         p: 1,
-        m: 5,
+        m: 1,
       }}
     >
-      <Typography sx={{ p: 1, m: 5 }} component="div" variant="h5">
+      <Typography
+        sx={{ p: 1, m: 5, color: "info.dark" }}
+        component="div"
+        variant="h4"
+      >
         Tools I Have Experience In
       </Typography>
       <Grid

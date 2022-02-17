@@ -9,7 +9,6 @@ import {
   TextField,
   CircularProgress,
   Box,
-  Paper,
   Typography,
 } from "@mui/material";
 
@@ -164,14 +163,14 @@ export default class extends React.Component {
               justifyContent="center"
               alignItems="center"
             >
-              <Typography component="div" variant="h4">
+              <Typography component="div">
                 <Enum state={this.state.emailSuccess}></Enum>
               </Typography>
 
               <TextField
                 className="textarea"
                 style={{ padding: 1, margin: 15 }}
-                sx={{ width: "30%", minWidth: 300 }}
+                sx={{ width: "30%", minWidth: 300, color: "info.dark" }}
                 name="name"
                 placeholder="Name"
                 maxLength="30"
@@ -181,7 +180,13 @@ export default class extends React.Component {
               />
 
               {errors.name.length > 0 ? (
-                <span className="error">{errors.name}</span>
+                <Typography
+                  variant="h8"
+                  sx={{ color: "warning.main" }}
+                  className="error"
+                >
+                  {errors.name}
+                </Typography>
               ) : (
                 <br />
               )}
@@ -198,13 +203,19 @@ export default class extends React.Component {
               />
 
               {errors.email.length > 0 ? (
-                <span className="error">{errors.email}</span>
+                <Typography
+                  variant="h8"
+                  sx={{ color: "warning.main" }}
+                  className="error"
+                >
+                  {errors.email}
+                </Typography>
               ) : (
                 <br />
               )}
 
               <TextField
-                sx={{ width: "30%", minWidth: 300 }}
+                sx={{ width: "30%", minWidth: 300, color: "info.dark" }}
                 multiline
                 id="filled-multiline-static"
                 rows={4}
@@ -218,7 +229,13 @@ export default class extends React.Component {
               />
 
               {errors.message.length > 0 ? (
-                <span className="error">{errors.message}</span>
+                <Typography
+                  variant="h8"
+                  sx={{ color: "warning.main" }}
+                  className="error"
+                >
+                  {errors.message}
+                </Typography>
               ) : (
                 <br />
               )}

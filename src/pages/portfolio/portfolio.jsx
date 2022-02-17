@@ -1,9 +1,8 @@
 import React from "react";
 import { projects } from "../../assets/models/projects";
 import ProjectCard from "../../components/projectCard/projectCard.jsx";
+import { Grid, Typography, Box } from "@mui/material";
 
-import { Grid, Typography } from "@mui/material";
-import { styled } from "@mui/material/styles";
 export default class Portfolio extends React.Component {
   constructor(props) {
     super(props);
@@ -16,30 +15,35 @@ export default class Portfolio extends React.Component {
     return (
       <Grid
         container
-        justifyContent="center"
-        alignItems="stretch"
         spacing={{ xs: 1, md: 2 }}
-        columns={{ xs: 4, sm: 4, md: 4 }}
-        height="95%"
+        height="90%"
+        justifyContent="center"
       >
-        <Grid item xs={4} md={12}>
-          <Typography variant="h3" component="div" m="10">
+        <Grid item>
+          <Typography
+            variant="h3"
+            component="div"
+            sx={{ p: 1, m: 1, color: "info.main" }}
+          >
             Projects I've Built
           </Typography>
         </Grid>
-        <Grid container>
+        <Box
+          container
+          display="flex"
+          direction="column"
+          sx={{
+            flexWrap: "wrap",
+            alignItems: "stretch",
+          }}
+          columns={{ xs: 4, md: 12 }}
+        >
           {this.state.projects.map((project) => (
-            <Grid
-              item
-              item
-              xs={4}
-              sx={{ minWidth: 200 }}
-              justifyContent="center"
-            >
+            <Grid container display="flex" xs={12} md={4}>
               <ProjectCard key={project.id} {...project} />
             </Grid>
           ))}
-        </Grid>
+        </Box>
       </Grid>
     );
   }

@@ -2,8 +2,8 @@ const express = require("express");
 const app = express();
 const port = process.env.PORT || 3001;
 const nodemailer = require("nodemailer");
-const creds = require("./config");
-const path = require("path");
+const creds = require("./config.env");
+// const path = require("path");
 
 var transport = {
   host: "smtp.gmail.com",

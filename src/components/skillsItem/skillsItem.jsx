@@ -1,14 +1,13 @@
 import React from "react";
-import { styled } from "@mui/material/styles";
-import { Paper } from "@mui/material";
-
-const Item = styled(Paper)(({ theme }) => ({
-  ...theme.typography.body2,
-  padding: theme.spacing(1),
-  textAlign: "center",
-  color: theme.palette.text.secondary,
-}));
+import { Paper, Typography } from "@mui/material";
+import { grey } from "@mui/material/colors";
 
 export default function SkillsItem(props) {
-  return <Item>{props.pSkill}</Item>;
+  return (
+    <Paper sx={{ bgcolor: "info.main" }}>
+      <Typography sx={{ color: grey[100], p: 2, m: 1 }}>
+        {props.pSkill}
+      </Typography>
+    </Paper>
+  );
 }

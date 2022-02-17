@@ -18,8 +18,8 @@ export default function About(props) {
         spacing={5}
       >
         <Grid item>
-          <Typography component="div" variant="h3">
-            Hello my name is Darren
+          <Typography component="div" variant="h3" color="info.main">
+            Hello my name is Darren Glew
           </Typography>
         </Grid>
 
@@ -29,18 +29,18 @@ export default function About(props) {
             color="text.secondary"
             component="div"
           >
-            <div>Problem solver and system builder.</div>
+            <div>Problem solver and system builder,</div>
 
             <div>
-              Eager to apply my experience delivering product and projects to a
+              eager to apply my experience delivering product and projects to a
               career in software development.
             </div>
           </Typography>
         </Grid>
 
         <Grid item>
-          <Typography variant="h6" color="text.secondary" component="div">
-            <div>Core Values</div>
+          <Typography variant="h6" color="info.main" component="div">
+            Core Values
           </Typography>
         </Grid>
 
@@ -50,6 +50,11 @@ export default function About(props) {
             color="text.secondary"
             component="div"
           >
+            <div>
+              A creative problem solver by nature, with an intrinsic belief
+              continual improvement,
+            </div>
+            <div>I'm: </div>
             <div>
               Driven to exceed benchmarks in quality, client satisfaction, and
               growth.
@@ -58,18 +63,11 @@ export default function About(props) {
               Passionate about team building and helping others develop to their
               greatest potential.
             </div>
-            <div>
-              Creative problem solver by nature, with an intrinsic belief
-              continual improvement.
-            </div>
+
             <div>
               Striving for deeper understanding of best practices, from
               objective assessment of the right stack for the project, to
               empowering coworker relationships.
-            </div>
-            <div>
-              Analytic, results-focused approach to challenges achieves optimal
-              outcomes for stakeholders.
             </div>
           </Typography>
         </Grid>
