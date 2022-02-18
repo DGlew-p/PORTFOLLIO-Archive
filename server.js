@@ -3,8 +3,7 @@ const app = express();
 const port = process.env.PORT || 3001;
 const nodemailer = require("nodemailer");
 const creds = require("./.env");
-// const path = require("path");
-
+const user = { user: creds.USER };
 var transport = {
   host: "smtp.gmail.com",
   auth: {
@@ -33,14 +32,15 @@ app.post("/send", (req, res, next) => {
 
   ejs.renderFile(
     __dirname + "/views/emailTemp.ejs",
-    { name: name, email: email, message: message },
+    { name: name, email: email, message: message, user: user },
     function (err, data) {
+      console.log(user.user);
       if (err) {
         console.log(err);
       } else {
         var mailOptions = {
           from: email,
-          to: "dglewcontactform@gmail.com",
+          to: user.user,
           subject: name,
           template: "emailTemp",
           html: data,

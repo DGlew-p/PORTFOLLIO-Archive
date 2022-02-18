@@ -1,6 +1,5 @@
 import React from "react";
 import { Box, Grid, Typography } from "@mui/material";
-import "./about.css";
 
 export default function About(props) {
   return (

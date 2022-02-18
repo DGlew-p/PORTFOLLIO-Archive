@@ -1,6 +1,6 @@
 import React from "react";
-import { styled } from "@mui/material/styles";
-import { Grid, Paper, Box, Card, Typography } from "@mui/material";
+
+import { Grid, Box, Typography } from "@mui/material";
 import { skills } from "../../assets/models/projects";
 import SkillsItem from "../../components/skillsItem/skillsItem";
 
