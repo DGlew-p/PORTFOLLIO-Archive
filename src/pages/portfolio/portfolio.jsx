@@ -1,7 +1,7 @@
 import React from "react";
 import { projects } from "../../assets/models/projects";
 import ProjectCard from "../../components/projectCard/projectCard.jsx";
-import { Grid, Typography, Box, Item } from "@mui/material";
+import { Grid, Typography, Box } from "@mui/material";
 
 export default class Portfolio extends React.Component {
   constructor(props) {
@@ -23,7 +23,7 @@ export default class Portfolio extends React.Component {
           <Typography
             variant="h5"
             component="div"
-            sx={{ p: 1, color: "info.main" }}
+            sx={{ p: 1, m: 1, color: "info.main" }}
           >
             Projects I've Worked On
           </Typography>

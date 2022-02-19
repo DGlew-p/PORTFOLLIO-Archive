@@ -37,9 +37,9 @@ export default function ProfileCard(props) {
 
             <Box
               display="flex"
-              justifyContent="space-between"
               sx={{
                 flexDirection: "column",
+                justifyContent: "space-between",
                 alignItems: "center",
               }}
             >
@@ -56,7 +56,7 @@ export default function ProfileCard(props) {
                 display="flex"
                 variant="body1"
                 color="text.secondary"
-                sx={{ p: 1, m: 1, justifyContent: "center" }}
+                sx={{ p: 1, justifyContent: "center" }}
               >
                 {props.stack}
               </Typography>
