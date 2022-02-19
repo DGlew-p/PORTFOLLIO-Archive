@@ -4,9 +4,9 @@ import { Box, Grid, Typography } from "@mui/material";
 export default function About(props) {
   return (
     <Box
-      sx={{ flexDirection: "column", p: 1, topMargin: 5, bottomMargin: 5 }}
+      sx={{ flexDirection: "column", p: 1 }}
       display="flex"
-      alignItems="center"
+      // alignItems="center"
       justifyContent="center"
     >
       <Grid
@@ -14,10 +14,15 @@ export default function About(props) {
         alignItems="center"
         justifyContent="center"
         direction="column"
-        spacing={5}
+        spacing={4}
       >
         <Grid item>
-          <Typography component="div" variant="h3" color="info.main">
+          <Typography
+            component="div"
+            variant="h3"
+            color="info.main"
+            sx={{ p: 1, m: 5 }}
+          >
             Hello my name is Darren Glew
           </Typography>
         </Grid>
@@ -28,18 +33,18 @@ export default function About(props) {
             color="text.secondary"
             component="div"
           >
-            <div>Problem solver and system builder,</div>
+            <div>I've always been a problem solver and system builder,</div>
 
             <div>
-              eager to apply my experience delivering product and projects to a
-              career in software development.
+              and now I'm eager to apply my experience delivering product and
+              projects to a career in software development.
             </div>
           </Typography>
         </Grid>
 
         <Grid item>
           <Typography variant="h6" color="info.main" component="div">
-            Core Values
+            The core values I bring to my work:
           </Typography>
         </Grid>
 
@@ -51,12 +56,12 @@ export default function About(props) {
           >
             <div>
               A creative problem solver by nature, with an intrinsic belief
-              continual improvement,
+              continual improvement.
             </div>
-            <div>I'm: </div>
             <div>
-              Driven to exceed benchmarks in quality, client satisfaction, and
-              growth.
+              Striving for deeper understanding of best practices, from
+              objective assessment of the right stack for the project, to
+              empowering coworker relationships.
             </div>
             <div>
               Passionate about team building and helping others develop to their
@@ -64,9 +69,8 @@ export default function About(props) {
             </div>
 
             <div>
-              Striving for deeper understanding of best practices, from
-              objective assessment of the right stack for the project, to
-              empowering coworker relationships.
+              Driven to exceed benchmarks in quality, client satisfaction, and
+              growth.
             </div>
           </Typography>
         </Grid>

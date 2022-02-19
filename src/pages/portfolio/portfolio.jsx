@@ -1,7 +1,7 @@
 import React from "react";
 import { projects } from "../../assets/models/projects";
 import ProjectCard from "../../components/projectCard/projectCard.jsx";
-import { Grid, Typography, Box } from "@mui/material";
+import { Grid, Typography, Box, Item } from "@mui/material";
 
 export default class Portfolio extends React.Component {
   constructor(props) {
@@ -15,17 +15,17 @@ export default class Portfolio extends React.Component {
     return (
       <Grid
         container
-        spacing={{ xs: 1, md: 2 }}
-        height="90%"
+        height="10vh"
         justifyContent="center"
+        alignItems="flex-start"
       >
         <Grid item>
           <Typography
-            variant="h3"
+            variant="h5"
             component="div"
-            sx={{ p: 1, m: 1, color: "info.main" }}
+            sx={{ p: 1, color: "info.main" }}
           >
-            Projects I've Built
+            Projects I've Worked On
           </Typography>
         </Grid>
         <Box
@@ -34,14 +34,10 @@ export default class Portfolio extends React.Component {
           direction="column"
           sx={{
             flexWrap: "wrap",
-            alignItems: "stretch",
           }}
-          columns={{ xs: 4, md: 12 }}
         >
           {this.state.projects.map((project) => (
-            <Grid container display="flex" xs={12} md={4}>
-              <ProjectCard key={project.id} {...project} />
-            </Grid>
+            <ProjectCard key={project.id} {...project} />
           ))}
         </Box>
       </Grid>

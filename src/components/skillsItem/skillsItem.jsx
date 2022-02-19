@@ -5,9 +5,7 @@ import { grey } from "@mui/material/colors";
 export default function SkillsItem(props) {
   return (
     <Paper sx={{ bgcolor: "info.main" }}>
-      <Typography sx={{ color: grey[100], p: 2, m: 1 }}>
-        {props.pSkill}
-      </Typography>
+      <Typography sx={{ color: grey[100], p: 2 }}>{props.pSkill}</Typography>
     </Paper>
   );
 }

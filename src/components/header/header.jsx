@@ -69,9 +69,9 @@ export default function Header(props) {
         color="primary"
         sx={{ top: 0, bottom: "auto", m: "1", p: "2" }}
       >
-        <Toolbar>
-          {isMobile ? (
-            <>
+        {isMobile ? (
+          <>
+            <Toolbar>
               <Grid
                 container
                 display="flex"
@@ -130,9 +130,12 @@ export default function Header(props) {
                   </IconButton>
                 </Link>
               </Grid>
-            </>
-          ) : (
-            <>
+            </Toolbar>
+            <Toolbar />
+          </>
+        ) : (
+          <>
+            <Toolbar>
               <NavLink
                 to="/about"
                 className={classes.link}
@@ -167,11 +170,10 @@ export default function Header(props) {
                   Skills
                 </NavLink>
               </Box>
-            </>
-          )}
-        </Toolbar>
+            </Toolbar>
+          </>
+        )}
       </AppBar>
-      <Toolbar />
     </React.Fragment>
   );
 }

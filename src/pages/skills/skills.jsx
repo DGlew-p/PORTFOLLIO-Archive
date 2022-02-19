@@ -25,7 +25,7 @@ export default function Skills(props) {
       </Typography>
       <Grid
         container
-        spacing={{ xs: 2, md: 3 }}
+        spacing={{ xs: 2, md: 2 }}
         columns={{ xs: 4, sm: 8, md: 12 }}
       >
         {skills.map((skills) => (

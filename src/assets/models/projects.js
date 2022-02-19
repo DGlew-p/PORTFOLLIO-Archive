@@ -7,7 +7,7 @@ export let projects = [
     id: "0",
     pName: "Share-It",
     image: cardImg0,
-    info: "Welcome to Share-it a site made for developers by developers. Our aim is to create a site that lets developers, recruiters, and all the good people out there who love learning to code , weather you are starting out or more experienced have access to a platform to share ideas, makes friends , get jobs all from the comfort of your ergonomic chair. So welcome our credo is when you have a good idea just share-it.",
+    info: "Welcome to Share-it a site made for developers by developers. Our aim is to create a site that lets developers have access to a platform to share ideas and make friends. So welcome our credo is when you have a good idea just share-it.",
     stack:
       "Node.js / Express  / MongoDB /  React  / JWT  / Styled Components / Bulma",
     gitLink: "https://git.generalassemb.ly/eraynai/share-it/tree/master",
@@ -18,7 +18,7 @@ export let projects = [
     id: "1",
     pName: "/your-space/",
     image: cardImg1,
-    info: "What does the future of workspaces look like in a post-pandemic world? As workspaces start to open up, it can be a struggle to find an ideal workspace for freelancers. They need to find a remote-friendly solution to schedule time in the office. Here's a scenario to consider:",
+    info: "What does the future of workspace look like? As workspaces start to open up, it can be a struggle to find an ideal space as a freelancer. They need to find a remote-friendly solution to schedule time in the office.",
     stack: "HTML / CSS / Python / Django / AWS S3 - Image Upload",
     gitLink: "https://github.com/DGlew-p/Progect-3/tree/development",
     depLink: "https://your-spaces.herokuapp.com/",
