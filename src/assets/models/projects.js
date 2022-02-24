@@ -88,28 +88,28 @@ export let skills = [
     image: cardImg0,
   },
   {
-    id: "15",
+    id: "10",
     pSkill: "Material-UI",
     image: cardImg0,
   },
   {
-    id: "10",
+    id: "11",
     pSkill: "Linux CLI",
     image: cardImg0,
   },
 
   {
-    id: "16",
+    id: "12",
     pSkill: "Git / Git-Hu",
     image: cardImg0,
   },
   {
-    id: "11",
+    id: "13",
     pSkill: "Agile / SCRUM ",
     image: cardImg0,
   },
   {
-    id: "12",
+    id: "14",
     pSkill: "Integration with Google + AWS APIs",
     image: cardImg0,
   },

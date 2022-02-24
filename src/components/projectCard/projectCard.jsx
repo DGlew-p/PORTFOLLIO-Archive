@@ -68,12 +68,22 @@ export default function ProfileCard(props) {
                 }}
               >
                 <a href={props.gitLink} target="_blank" rel="noreferrer">
-                  <IconButton size="large" color="inherit" sx={{ p: 1, m: 1 }}>
+                  <IconButton
+                    size="large"
+                    color="inherit"
+                    aria-label="Git hub link"
+                    sx={{ p: 1, m: 1 }}
+                  >
                     <GitHub sx={{ color: lightBlue[800] }} />
                   </IconButton>
                 </a>
                 <a href={props.depLink} target="_blank" rel="noreferrer">
-                  <IconButton size="large" color="inherit" sx={{ p: 1, m: 1 }}>
+                  <IconButton
+                    size="large"
+                    color="inherit"
+                    aria-label="deployment link"
+                    sx={{ p: 1, m: 1 }}
+                  >
                     <Public sx={{ color: lightBlue[800] }} />
                   </IconButton>
                 </a>

@@ -79,10 +79,11 @@ export default function Header(props) {
                 alignItems="center"
                 width="100%"
               >
-                <DrawerComponent />
+                <DrawerComponent aria-label="drawer icon" />
 
                 <NavLink
                   to="/about"
+                  aria-label="about page"
                   className={classes.link}
                   sx={{ justifyContent: "center" }}
                 >
@@ -95,12 +96,17 @@ export default function Header(props) {
                   </Typography>
                 </NavLink>
                 <NavLink to="/contact" className={classes.navLink}>
-                  <IconButton size="large" color="inherit">
+                  <IconButton
+                    size="large"
+                    aria-label="contact page"
+                    color="inherit"
+                  >
                     <Mail className={classes.iconLink} />
                   </IconButton>
                 </NavLink>
                 <Link
                   className={classes.navLink}
+                  aria-label="linkedIn link"
                   href="https://www.linkedin.com/in/darren-glew/"
                   target="_blank"
                   rel="noreferrer"
@@ -110,6 +116,7 @@ export default function Header(props) {
                   </IconButton>
                 </Link>
                 <Link
+                  aria-label="Git Hub link"
                   className={classes.navLink}
                   href="https://github.com/DGlew-p"
                   target="_blank"
@@ -121,6 +128,7 @@ export default function Header(props) {
                 </Link>
                 <Link
                   className={classes.navLink}
+                  aria-label="resume link"
                   href={CVPdf}
                   target="_blank"
                   rel="noreferrer"
@@ -138,6 +146,7 @@ export default function Header(props) {
             <Toolbar>
               <NavLink
                 to="/about"
+                aria-label="about page"
                 className={classes.link}
                 sx={{ justifyContent: "center" }}
               >

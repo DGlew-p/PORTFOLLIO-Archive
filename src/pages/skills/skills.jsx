@@ -29,8 +29,8 @@ export default function Skills(props) {
         columns={{ xs: 4, sm: 8, md: 12 }}
       >
         {skills.map((skills) => (
-          <Grid item xs={4}>
-            <SkillsItem key={skills.id} {...skills} />
+          <Grid item key={skills.id} xs={4}>
+            <SkillsItem {...skills} />
           </Grid>
         ))}
       </Grid>

@@ -18,7 +18,7 @@ transporter.verify((error, success) => {
   if (error) {
     console.log(error);
   } else {
-    console.log("T success");
+    console.log("success");
   }
 });
 
@@ -34,7 +34,6 @@ app.post("/send", (req, res, next) => {
     __dirname + "/views/emailTemp.ejs",
     { name: name, email: email, message: message, user: user },
     function (err, data) {
-      console.log(user.user);
       if (err) {
         console.log(err);
       } else {
