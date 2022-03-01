@@ -55,7 +55,7 @@ export default function About(props) {
             component="div"
           >
             <div>
-              A creative problem solver by nature, with an intrinsic belief
+              A creative problem solver by nature, with an intrinsic belief in
               continual improvement.
             </div>
             <div>
