@@ -71,7 +71,7 @@ export default function Header(props) {
       >
         {isMobile ? (
           <>
-            <Toolbar>
+            <Toolbar variant="dense">
               <Grid
                 container
                 display="flex"
@@ -139,7 +139,6 @@ export default function Header(props) {
                 </Link>
               </Grid>
             </Toolbar>
-            <Toolbar />
           </>
         ) : (
           <>

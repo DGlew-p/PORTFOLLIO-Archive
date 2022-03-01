@@ -88,7 +88,8 @@ export default class extends React.Component {
         errors.email = validEmailRegex.test(value) ? "" : "Enter a valid Email";
         break;
       case "message":
-        errors.message = value.length < 5 ? "Please leave a message" : "";
+        errors.message =
+          value.length < 5 ? "Please leave a longer message" : "";
         break;
       default:
         break;
@@ -148,7 +149,7 @@ export default class extends React.Component {
           justifyContent="center"
           alignItems="center"
         >
-          <CircularProgress color="primary"></CircularProgress>
+          <CircularProgress sx={{ m: 20 }} color="primary"></CircularProgress>
         </Box>
       );
     } else
@@ -163,7 +164,7 @@ export default class extends React.Component {
               justifyContent="center"
               alignItems="center"
             >
-              <Typography component="div">
+              <Typography component="div" sx={{ m: 2 }}>
                 <Enum state={this.state.emailSuccess}></Enum>
               </Typography>
 
