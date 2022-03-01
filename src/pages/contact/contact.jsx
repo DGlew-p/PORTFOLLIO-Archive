@@ -22,7 +22,7 @@ function Enum({ state }) {
   return <div>{enomObj[state]}</div>;
 }
 
-export default class extends React.Component {
+export default class Contact extends React.Component {
   constructor(props) {
     super(props);
 
