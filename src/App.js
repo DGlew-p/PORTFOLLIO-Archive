@@ -30,7 +30,6 @@ class App extends React.Component {
   };
 
   render() {
-    const { ...other } = this.props;
     return (
       <div className="App">
         <CssBaseline sx={{ bgcolor: grey[100] }} />
