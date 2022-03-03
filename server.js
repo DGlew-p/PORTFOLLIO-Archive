@@ -1,19 +1,19 @@
+require("dotenv").config({ override: true });
+
 const express = require("express");
 const app = express();
 const port = process.env.PORT || 3001;
-require("dotenv").config();
+const favicon = require("serve-favicon");
+const path = require("path");
 const nodemailer = require("nodemailer");
-const creds = require("./.env");
-const user = { user: creds.USER };
-var transport = {
-  host: "smtp.gmail.com",
-  auth: {
-    user: creds.USER,
-    pass: creds.PASS,
-  },
-};
 
-var transporter = nodemailer.createTransport(transport);
+const transporter = nodemailer.createTransport({
+  service: "gmail",
+  auth: {
+    user: process.env.USER,
+    pass: process.env.PASS,
+  },
+});
 
 transporter.verify((error, success) => {
   if (error) {
@@ -24,6 +24,9 @@ transporter.verify((error, success) => {
 });
 
 app.use(express.json());
+app.use(favicon(path.join(__dirname, "build", "favicon.ico")));
+app.use(express.static(path.join(__dirname, "build")));
+
 app.post("/send", (req, res, next) => {
   const name = req.body.name;
   const email = req.body.email;
@@ -33,15 +36,15 @@ app.post("/send", (req, res, next) => {
 
   ejs.renderFile(
     __dirname + "/views/emailTemp.ejs",
-    { name: name, email: email, message: message, user: user },
+    { name: name, email: email, message: message, user: process.env.USER },
     function (err, data) {
-      console.log(user.user);
+      console.log(user + "options");
       if (err) {
         console.log(err);
       } else {
         var mailOptions = {
           from: email,
-          to: user.user,
+          to: user,
           subject: name,
           template: "emailTemp",
           html: data,
@@ -62,8 +65,9 @@ app.post("/send", (req, res, next) => {
     }
   );
 });
-app.listen(port, () => console.log(`Listening on port ${port}`));
 
-app.get("/express_backend", (req, res) => {
-  res.send({ express: "EXPRESS CONNECTED TO REACT" });
+app.get("/*", function (req, res) {
+  res.sendFile(path.join(__dirname, "build", "index.html"));
 });
+
+app.listen(port, () => console.log(`Listening on port ${port}`));
