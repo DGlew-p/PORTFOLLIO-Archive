@@ -242,7 +242,7 @@ export default class Contact extends React.Component {
 
               {this.state.errorCount === 0 ? (
                 <Button
-                  isActive="false"
+                  isactive="false"
                   sx={{ width: "30%", minWidth: 300, color: "primary" }}
                   style={{ padding: 1, margin: 15 }}
                   variant="contained"
