@@ -22,7 +22,7 @@ function Enum({ state }) {
   return <div>{enomObj[state]}</div>;
 }
 
-export default class Contact extends React.Component {
+export default class extends React.Component {
   constructor(props) {
     super(props);
 
@@ -53,7 +53,7 @@ export default class Contact extends React.Component {
 
     axios({
       method: "POST",
-      url: "/send",
+      url: "http://localhost:3000/send",
       data: {
         name: this.state.name,
         email: this.state.email,
@@ -77,7 +77,7 @@ export default class Contact extends React.Component {
       /^(([^<>()\[\]\.,;:\s@\"]+(\.[^<>()\[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i
     );
 
-    let { name, value } = event.target;
+    const { name, value } = event.target;
     let errors = this.state.errors;
 
     switch (name) {
@@ -95,7 +95,7 @@ export default class Contact extends React.Component {
     }
 
     this.setState({ errors, [name]: value });
-    let countErrors = (errors) => {
+    const countErrors = (errors) => {
       let count = 0;
       Object.values(errors).forEach(
         (val) => val.length > 0 && (count = count + 1)
@@ -138,7 +138,7 @@ export default class Contact extends React.Component {
   }
 
   ifLoading() {
-    let { errors } = this.state;
+    const { errors } = this.state;
 
     if (this.state.loading) {
       return (
@@ -242,7 +242,7 @@ export default class Contact extends React.Component {
 
               {this.state.errorCount === 0 ? (
                 <Button
-                  isactive="false"
+                  isActive="false"
                   sx={{ width: "30%", minWidth: 300, color: "primary" }}
                   style={{ padding: 1, margin: 15 }}
                   variant="contained"

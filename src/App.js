@@ -20,8 +20,8 @@ class App extends React.Component {
   }
   // Fetches our GET route from the Express server. (Note the route we are fetching matches the GET route from server.js
   callBackendAPI = async () => {
-    let response = await fetch("/express_backend");
-    let body = await response.json();
+    const response = await fetch("/express_backend");
+    const body = await response.json();
 
     if (response.status !== 200) {
       throw Error(body.message);
@@ -30,6 +30,7 @@ class App extends React.Component {
   };
 
   render() {
+    const { ...other } = this.props;
     return (
       <div className="App">
         <CssBaseline sx={{ bgcolor: grey[100] }} />
