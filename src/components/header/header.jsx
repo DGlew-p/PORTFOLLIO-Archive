@@ -60,7 +60,7 @@ const useStyles = makeStyles((theme) => ({
 export default function Header(props) {
   const classes = useStyles();
   const theme = useTheme();
-  const isMobile = useMediaQuery(theme.breakpoints.down("md"));
+  var isMobile = useMediaQuery(theme.breakpoints.down("md"));
 
   return (
     <React.Fragment>

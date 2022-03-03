@@ -28,7 +28,7 @@ const useStyles = makeStyles(() => ({
 
 function DrawerComponent() {
   const classes = useStyles();
-  const [openDrawer, setOpenDrawer] = useState(false);
+  var [openDrawer, setOpenDrawer] = useState(false);
   return (
     <>
       <Drawer open={openDrawer} onClose={() => setOpenDrawer(false)}>

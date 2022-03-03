@@ -77,7 +77,7 @@ export default class Contact extends React.Component {
       /^(([^<>()\[\]\.,;:\s@\"]+(\.[^<>()\[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i
     );
 
-    const { name, value } = event.target;
+    var { name, value } = event.target;
     let errors = this.state.errors;
 
     switch (name) {
@@ -95,7 +95,7 @@ export default class Contact extends React.Component {
     }
 
     this.setState({ errors, [name]: value });
-    const countErrors = (errors) => {
+    var countErrors = (errors) => {
       let count = 0;
       Object.values(errors).forEach(
         (val) => val.length > 0 && (count = count + 1)
@@ -138,7 +138,7 @@ export default class Contact extends React.Component {
   }
 
   ifLoading() {
-    const { errors } = this.state;
+    var { errors } = this.state;
 
     if (this.state.loading) {
       return (

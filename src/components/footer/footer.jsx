@@ -46,7 +46,7 @@ const useStyles = makeStyles((theme) => ({
 export default function Footer(props) {
   const classes = useStyles();
   const theme = useTheme();
-  const isMobile = useMediaQuery(theme.breakpoints.down("md"));
+  var isMobile = useMediaQuery(theme.breakpoints.down("md"));
   return (
     <>
       {!isMobile && (
