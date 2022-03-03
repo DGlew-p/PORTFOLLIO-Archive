@@ -1,6 +1,7 @@
 const express = require("express");
 const app = express();
 const port = process.env.PORT || 3001;
+require("dotenv").config();
 const nodemailer = require("nodemailer");
 const creds = require("./.env");
 const user = { user: creds.USER };
