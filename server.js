@@ -36,15 +36,14 @@ app.post("/send", (req, res, next) => {
 
   ejs.renderFile(
     __dirname + "/views/emailTemp.ejs",
-    { name: name, email: email, message: message, user: process.env.USER },
+    { name: name, email: email, message: message },
     function (err, data) {
-      console.log(user + "options");
       if (err) {
         console.log(err);
       } else {
         var mailOptions = {
           from: email,
-          to: user,
+          to: process.env.USER,
           subject: name,
           template: "emailTemp",
           html: data,
