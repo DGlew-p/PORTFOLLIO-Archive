@@ -2,12 +2,12 @@ require("dotenv").config({ override: true });
 
 const express = require("express");
 const app = express();
-var port = process.env.PORT || 3001;
+let port = process.env.PORT || 3001;
 const favicon = require("serve-favicon");
 const path = require("path");
 const nodemailer = require("nodemailer");
 
-var transporter = nodemailer.createTransport({
+let transporter = nodemailer.createTransport({
   service: "gmail",
   auth: {
     user: process.env.USER,
@@ -28,9 +28,9 @@ app.use(favicon(path.join(__dirname, "build", "favicon.ico")));
 app.use(express.static(path.join(__dirname, "build")));
 
 app.post("/send", (req, res, next) => {
-  var name = req.body.name;
-  var email = req.body.email;
-  var message = req.body.messageHtml;
+  let name = req.body.name;
+  let email = req.body.email;
+  let message = req.body.messageHtml;
 
   const ejs = require("ejs");
 
@@ -41,7 +41,7 @@ app.post("/send", (req, res, next) => {
       if (err) {
         console.log(err);
       } else {
-        var mailOptions = {
+        let mailOptions = {
           from: email,
           to: process.env.USER,
           subject: name,

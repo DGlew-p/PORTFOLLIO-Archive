@@ -20,8 +20,8 @@ class App extends React.Component {
   }
   // Fetches our GET route from the Express server. (Note the route we are fetching matches the GET route from server.js
   callBackendAPI = async () => {
-    var response = await fetch("/express_backend");
-    var body = await response.json();
+    let response = await fetch("/express_backend");
+    let body = await response.json();
 
     if (response.status !== 200) {
       throw Error(body.message);
