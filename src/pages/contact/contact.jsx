@@ -70,7 +70,7 @@ export default class Contact extends React.Component {
     // });
 
     axios
-      .post("https://portfolio-darrenglew.herokuapp.com/send", {
+      .post("/*", {
         name: this.state.name,
         email: this.state.email,
         messageHtml: this.state.message,
