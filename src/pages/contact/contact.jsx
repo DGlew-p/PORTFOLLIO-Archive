@@ -164,7 +164,7 @@ export default class Contact extends React.Component {
               justifyContent="center"
               alignItems="center"
             >
-              <Typography component="div">
+              <Typography component="div" sx={{ m: 3 }}>
                 <Enum state={this.state.emailSuccess}></Enum>
               </Typography>
 
@@ -243,8 +243,11 @@ export default class Contact extends React.Component {
 
               {this.state.errorCount === 0 ? (
                 <Button
-                  isactive="false"
-                  sx={{ width: "30%", minWidth: 300, color: "primary" }}
+                  sx={{
+                    width: "30%",
+                    minWidth: 300,
+                    color: "primary",
+                  }}
                   style={{ padding: 1, margin: 15 }}
                   variant="contained"
                   type="button"
@@ -257,7 +260,7 @@ export default class Contact extends React.Component {
               ) : (
                 <Button
                   style={{ padding: 1, margin: 15 }}
-                  sx={{ width: "10%" }}
+                  sx={{ width: "10%", border: 2 }}
                   variant="contained"
                   type="button"
                   value="Submit"
