@@ -26,41 +26,47 @@ transporter.verify((error, success) => {
 app.use(express.json());
 app.use(express.static(buildpath));
 app.post("/send", (req, res, next) => {
-  const name = req.body.name;
-  const email = req.body.email;
-  const message = req.body.messageHtml;
+  try {
+    const name = req.body.name;
+    const email = req.body.email;
+    const message = req.body.messageHtml;
 
-  const ejs = require("ejs");
+    const ejs = require("ejs");
 
-  ejs.renderFile(
-    __dirname + "/views/emailTemp.ejs",
-    { name: name, email: email, message: message },
-    function (err, data) {
-      if (err) {
-        console.log(err);
-      } else {
-        var mailOptions = {
-          from: email,
-          to: process.env.USER,
-          subject: name,
-          template: "emailTemp",
-          html: data,
-        };
+    ejs.renderFile(
+      __dirname + "/views/emailTemp.ejs",
+      { name: name, email: email, message: message },
+      function (err, data) {
+        if (err) {
+          console.log(err);
+        } else {
+          var mailOptions = {
+            from: email,
+            to: process.env.USER,
+            subject: name,
+            template: "emailTemp",
+            html: data,
+          };
 
-        transporter.sendMail(mailOptions, function (err, data) {
-          if (err) {
-            res.status(500).send({
-              message: "fail",
-            });
-          } else {
-            res.send({
-              message: "success",
-            });
-          }
-        });
+          transporter.sendMail(mailOptions, function (err, data) {
+            if (err) {
+              res.status(500).send({
+                message: "fail",
+              });
+            } else {
+              res.send({
+                message: "success",
+              });
+            }
+          });
+        }
       }
-    }
-  );
+    );
+  } catch (error) {
+    res.status(500).send({
+      message: "fail",
+    });
+  }
 });
 app.listen(port, () => console.log(`Listening on port ${port}`));
 
