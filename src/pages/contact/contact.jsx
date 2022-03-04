@@ -51,23 +51,40 @@ export default class Contact extends React.Component {
       loading: true,
     });
 
-    axios({
-      method: "POST",
-      url: "/send",
-      data: {
+    // axios({
+    //   method: "POST",
+    //   url: "/send",
+    //   data: {
+    //     name: this.state.name,
+    //     email: this.state.email,
+    //     messageHtml: this.state.message,
+    //   },
+    // }).then((response) => {
+    //   if (response.data.msg === "success") {
+    //     this.emailSuccess();
+    //     this.resetForm();
+    //   } else if (response.data.msg === "fail") {
+    //     this.emailBad();
+    //     this.resetForm();
+    //   }
+    // });
+
+    axios
+      .post("/send", {
         name: this.state.name,
         email: this.state.email,
         messageHtml: this.state.message,
-      },
-    }).then((response) => {
-      if (response.data.msg === "success") {
+      })
+      .then((response) => {
+        if (response.data.msg === "success");
         this.emailSuccess();
         this.resetForm();
-      } else if (response.data.msg === "fail") {
+      })
+      .catch((response) => {
+        if (response.data.msg === "fail");
         this.emailBad();
         this.resetForm();
-      }
-    });
+      });
   };
 
   handleChange(event) {
