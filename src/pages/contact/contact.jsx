@@ -76,12 +76,12 @@ export default class Contact extends React.Component {
         messageHtml: this.state.message,
       })
       .then((response) => {
-        if (response.data.msg === "success");
+        if (response.data.message === "success");
         this.emailSuccess();
         this.resetForm();
       })
       .catch((response) => {
-        if (response.data.msg === "fail");
+        if (response.data.message === "fail");
         this.emailBad();
         this.resetForm();
       });

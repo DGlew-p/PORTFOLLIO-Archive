@@ -47,14 +47,14 @@ app.post("/send", (req, res, next) => {
           html: data,
         };
 
-        transporter.sendMail(mailOptions, (err, data) => {
+        transporter.sendMail(mailOptions, function (err, data) {
           if (err) {
-            res.json({
-              msg: "fail",
+            res.status(500).send({
+              message: "fail",
             });
           } else {
-            res.json({
-              msg: "success",
+            res.send({
+              message: "success",
             });
           }
         });
