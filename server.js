@@ -1,14 +1,14 @@
+require("dotenv").config({ override: true });
 const express = require("express");
 const app = express();
 const port = process.env.PORT || 3001;
 const nodemailer = require("nodemailer");
-const creds = require("./.env");
-const user = { user: creds.USER };
+const path = require("path");
 var transport = {
   host: "smtp.gmail.com",
   auth: {
-    user: creds.USER,
-    pass: creds.PASS,
+    user: process.env.USER,
+    pass: process.env.PASS,
   },
 };
 
@@ -32,7 +32,7 @@ app.post("/send", (req, res, next) => {
 
   ejs.renderFile(
     __dirname + "/views/emailTemp.ejs",
-    { name: name, email: email, message: message, user: user },
+    { name: name, email: email, message: message },
     function (err, data) {
       console.log(user.user);
       if (err) {
@@ -40,7 +40,7 @@ app.post("/send", (req, res, next) => {
       } else {
         var mailOptions = {
           from: email,
-          to: user.user,
+          to: process.env.USER,
           subject: name,
           template: "emailTemp",
           html: data,
