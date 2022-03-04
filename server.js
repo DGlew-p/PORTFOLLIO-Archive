@@ -27,49 +27,52 @@ transporter.verify((error, success) => {
 
 app.use(express.json());
 app.use(express.static(buildPath));
-app.post("/send", (req, res, next) => {
-  try {
-    const name = req.body.name;
-    const email = req.body.email;
-    const message = req.body.messageHtml;
+app.post(
+  "https://portfolio-darrenglew.herokuapp.com/send",
+  (req, res, next) => {
+    try {
+      const name = req.body.name;
+      const email = req.body.email;
+      const message = req.body.messageHtml;
 
-    const ejs = require("ejs");
+      const ejs = require("ejs");
 
-    ejs.renderFile(
-      __dirname + "/public/emailTemp.ejs",
-      { name: name, email: email, message: message },
-      function (err, data) {
-        if (err) {
-          console.log(err);
-        } else {
-          var mailOptions = {
-            from: email,
-            to: process.env.USER,
-            subject: name,
-            template: "emailTemp",
-            html: data,
-          };
+      ejs.renderFile(
+        __dirname + "/public/emailTemp.ejs",
+        { name: name, email: email, message: message },
+        function (err, data) {
+          if (err) {
+            console.log(err);
+          } else {
+            var mailOptions = {
+              from: email,
+              to: process.env.USER,
+              subject: name,
+              template: "emailTemp",
+              html: data,
+            };
 
-          transporter.sendMail(mailOptions, function (err, info) {
-            if (err) {
-              res.json({
-                message: "fail",
-              });
-            } else {
-              res.json({
-                message: "success",
-              });
-            }
-          });
+            transporter.sendMail(mailOptions, function (err, info) {
+              if (err) {
+                res.json({
+                  message: "fail",
+                });
+              } else {
+                res.json({
+                  message: "success",
+                });
+              }
+            });
+          }
         }
-      }
-    );
-  } catch (error) {
-    res.jason({
-      message: "fail",
-    });
+      );
+    } catch (error) {
+      res.jason({
+        message: "fail",
+      });
+    }
   }
-});
+);
 
 const port = process.env.PORT || 3001;
 app.listen(port, () => console.log(`Listening on port ${port}`));
