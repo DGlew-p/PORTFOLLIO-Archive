@@ -50,11 +50,11 @@ app.post("/send", (req, res, next) => {
 
           transporter.sendMail(mailOptions, function (err, info) {
             if (err) {
-              res.jason({
+              res.json({
                 message: "fail",
               });
             } else {
-              res.jason({
+              res.json({
                 message: "success",
               });
             }
