@@ -34,7 +34,6 @@ app.post("/send", (req, res, next) => {
     __dirname + "/views/emailTemp.ejs",
     { name: name, email: email, message: message },
     function (err, data) {
-      console.log(user.user);
       if (err) {
         console.log(err);
       } else {
@@ -63,6 +62,6 @@ app.post("/send", (req, res, next) => {
 });
 app.listen(port, () => console.log(`Listening on port ${port}`));
 
-app.get("/express_backend", (req, res) => {
-  res.send({ express: "EXPRESS CONNECTED TO REACT" });
+app.get("/*", function (req, res) {
+  res.sendFile(path.join(__dirname, "build", "index.html"));
 });
