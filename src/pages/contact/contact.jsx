@@ -1,3 +1,5 @@
+CONTACT;
+
 import React from "react";
 
 import EmailGood from "../../components/emailMsg/emailgood";
@@ -22,7 +24,7 @@ function Enum({ state }) {
   return <div>{enomObj[state]}</div>;
 }
 
-export default class extends React.Component {
+export default class Contact extends React.Component {
   constructor(props) {
     super(props);
 
@@ -77,7 +79,7 @@ export default class extends React.Component {
       /^(([^<>()\[\]\.,;:\s@\"]+(\.[^<>()\[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i
     );
 
-    const { name, value } = event.target;
+    let { name, value } = event.target;
     let errors = this.state.errors;
 
     switch (name) {
@@ -95,7 +97,7 @@ export default class extends React.Component {
     }
 
     this.setState({ errors, [name]: value });
-    const countErrors = (errors) => {
+    let countErrors = (errors) => {
       let count = 0;
       Object.values(errors).forEach(
         (val) => val.length > 0 && (count = count + 1)
@@ -138,7 +140,7 @@ export default class extends React.Component {
   }
 
   ifLoading() {
-    const { errors } = this.state;
+    let { errors } = this.state;
 
     if (this.state.loading) {
       return (
@@ -242,7 +244,7 @@ export default class extends React.Component {
 
               {this.state.errorCount === 0 ? (
                 <Button
-                  isActive="false"
+                  isactive="false"
                   sx={{ width: "30%", minWidth: 300, color: "primary" }}
                   style={{ padding: 1, margin: 15 }}
                   variant="contained"
