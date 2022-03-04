@@ -1,10 +1,12 @@
 require("dotenv").config({ override: true });
+const nodemailer = require("nodemailer");
+
+const path = require("path");
 const express = require("express");
 const app = express();
-const port = process.env.PORT || 3001;
-const nodemailer = require("nodemailer");
-const path = require("path");
-const buildpath = path.join(__dirname, "..", "build");
+
+const buildPath = path.join("build");
+console.log(buildPath + "BP");
 var transport = {
   host: "smtp.gmail.com",
   auth: {
@@ -24,7 +26,7 @@ transporter.verify((error, success) => {
 });
 
 app.use(express.json());
-app.use(express.static(buildpath));
+app.use(express.static(buildPath));
 app.post("/send", (req, res, next) => {
   try {
     const name = req.body.name;
@@ -34,7 +36,7 @@ app.post("/send", (req, res, next) => {
     const ejs = require("ejs");
 
     ejs.renderFile(
-      __dirname + "/views/emailTemp.ejs",
+      __dirname + "/public/emailTemp.ejs",
       { name: name, email: email, message: message },
       function (err, data) {
         if (err) {
@@ -68,6 +70,8 @@ app.post("/send", (req, res, next) => {
     });
   }
 });
+
+const port = process.env.PORT || 3001;
 app.listen(port, () => console.log(`Listening on port ${port}`));
 
 app.get("/*", function (req, res) {
