@@ -48,13 +48,13 @@ app.post("/send", (req, res, next) => {
             html: data,
           };
 
-          transporter.sendMail(mailOptions, function (err, data) {
+          transporter.sendMail(mailOptions, function (err, info) {
             if (err) {
-              res.status(500).send({
+              res.jason({
                 message: "fail",
               });
             } else {
-              res.send({
+              res.jason({
                 message: "success",
               });
             }
@@ -63,7 +63,7 @@ app.post("/send", (req, res, next) => {
       }
     );
   } catch (error) {
-    res.status(500).send({
+    res.jason({
       message: "fail",
     });
   }
