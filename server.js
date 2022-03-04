@@ -4,6 +4,7 @@ const app = express();
 const port = process.env.PORT || 3001;
 const nodemailer = require("nodemailer");
 const path = require("path");
+const buildpath = path.join(__dirname, "..", "build");
 var transport = {
   host: "smtp.gmail.com",
   auth: {
@@ -23,6 +24,7 @@ transporter.verify((error, success) => {
 });
 
 app.use(express.json());
+app.use(express.static(buildpath));
 app.post("/send", (req, res, next) => {
   const name = req.body.name;
   const email = req.body.email;
