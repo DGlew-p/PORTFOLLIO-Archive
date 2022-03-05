@@ -27,7 +27,7 @@ const buildPath = path.join("build");
 console.log(buildPath + "BP");
 app.use(express.json());
 app.use(express.static(buildPath));
-app.post("/*", (req, res) => {
+app.get("/send", (req, res) => {
   try {
     const name = req.body.name;
     const email = req.body.email;
