@@ -70,7 +70,7 @@ export default class Contact extends React.Component {
     // });
 
     axios
-      .get("/send", {
+      .post("/send", {
         name: this.state.name,
         email: this.state.email,
         messageHtml: this.state.message,
