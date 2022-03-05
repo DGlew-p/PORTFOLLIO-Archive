@@ -52,12 +52,12 @@ app.post("/send", (req, res) => {
 
           transporter.sendMail(mailOptions, function (err, info) {
             if (err) {
-              res.json({
-                message: "fail",
+              res.status(500).send({
+                success: false,
               });
             } else {
-              res.json({
-                message: "success",
+              res.send({
+                success: true,
               });
             }
           });
@@ -65,8 +65,8 @@ app.post("/send", (req, res) => {
       }
     );
   } catch (error) {
-    res.jason({
-      message: "fail",
+    res.status(500).send({
+      success: false,
     });
   }
 });

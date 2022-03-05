@@ -34,6 +34,7 @@ export default class Contact extends React.Component {
       errorCount: null,
       hideDialog: true,
       emailSuccess: null,
+      axiosResponse: null,
 
       errors: {
         name: "Enter your name",
@@ -57,13 +58,11 @@ export default class Contact extends React.Component {
         email: this.state.email,
         messageHtml: this.state.message,
       })
-      .then((response) => {
-        if (response.data.message === "success");
+      .then(() => {
         this.emailSuccess();
         this.resetForm();
       })
-      .catch((response) => {
-        if (response.data.message === "fail");
+      .catch(() => {
         this.emailBad();
         this.resetForm();
       });
