@@ -23,7 +23,7 @@ transporter.verify((error, success) => {
   }
 });
 
-const buildPath = path.join("build");
+const buildPath = path.join(__dirname, "build");
 console.log(buildPath + "BP");
 app.use(express.json());
 app.use(express.static(buildPath));
