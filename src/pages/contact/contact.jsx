@@ -67,9 +67,11 @@ export default class Contact extends React.Component {
       });
 
       await fetchResponse.json();
+      console.log("fetch good");
       this.emailSuccess();
       this.resetForm();
     } catch (err) {
+      console.log("fetch bad");
       this.emailBad();
       this.resetForm();
     }

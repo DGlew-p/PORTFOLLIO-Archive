@@ -4,6 +4,7 @@ const favicon = require("serve-favicon");
 const path = require("path");
 const express = require("express");
 const app = express();
+app.use(express.json());
 
 app.use(express.json());
 app.use(favicon(path.join(__dirname, "build", "favicon.ico")));
