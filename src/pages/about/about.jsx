@@ -23,7 +23,7 @@ export default function About(props) {
             color="info.main"
             sx={{ p: 1, m: 5 }}
           >
-            Hello my name is Darren Glew
+            Hello my name is Darren
           </Typography>
         </Grid>
 
