@@ -11,6 +11,8 @@ import {
   IconButton,
   Grid,
 } from "@mui/material";
+import WorkIcon from "@mui/icons-material/Work";
+import CodeIcon from "@mui/icons-material/Code";
 import DrawerComponent from "../drawer/drawer.jsx";
 
 import { makeStyles } from "@material-ui/core/styles";
@@ -80,55 +82,27 @@ export default function Header(props) {
                 width="100%"
               >
                 <DrawerComponent />
-
-                <NavLink
-                  to="/about"
-                  className={classes.link}
-                  sx={{ justifyContent: "center" }}
-                >
-                  <Typography
-                    className={classes.topog}
-                    sx={{ m: "1", p: "2" }}
-                    variant="h6"
+                <Grid item>
+                  <NavLink
+                    to="/about"
+                    className={classes.link}
+                    sx={{ justifyContent: "center" }}
                   >
-                    DG
-                  </Typography>
+                    <Typography
+                      className={classes.topog}
+                      sx={{ m: "1", p: "2" }}
+                      variant="h6"
+                    >
+                      DG
+                    </Typography>
+                  </NavLink>
+                </Grid>
+                <NavLink to="/portfolio" className={classes.link}>
+                  <WorkIcon />
                 </NavLink>
-                <NavLink to="/contact" className={classes.navLink}>
-                  <IconButton size="large" color="inherit">
-                    <Mail className={classes.iconLink} />
-                  </IconButton>
+                <NavLink to="/skills" className={classes.link}>
+                  <CodeIcon />
                 </NavLink>
-                <Link
-                  className={classes.navLink}
-                  href="https://www.linkedin.com/in/darren-glew/"
-                  target="_blank"
-                  rel="noreferrer"
-                >
-                  <IconButton size="large">
-                    <LinkedIn className={classes.iconLink} />
-                  </IconButton>
-                </Link>
-                <Link
-                  className={classes.navLink}
-                  href="https://github.com/DGlew-p"
-                  target="_blank"
-                  rel="noreferrer"
-                >
-                  <IconButton size="large">
-                    <GitHub className={classes.iconLink} />
-                  </IconButton>
-                </Link>
-                <Link
-                  className={classes.navLink}
-                  href={CVPdf}
-                  target="_blank"
-                  rel="noreferrer"
-                >
-                  <IconButton size="large" aria-label="">
-                    <HistoryEdu className={classes.iconLink} />
-                  </IconButton>
-                </Link>
               </Grid>
             </Toolbar>
           </>

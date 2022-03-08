@@ -1,5 +1,5 @@
 import React from "react";
-import { Typography, IconButton, Link, Button } from "@mui/material";
+import { Typography, Button } from "@mui/material";
 import SendIcon from "@mui/icons-material/Send";
 
 export default function EmailBad() {

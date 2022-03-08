@@ -76,20 +76,25 @@ export default function Footer(props) {
                   </Typography>
                 </Grid>
                 <Grid item>
-                  <NavLink to="/contact" className={classes.navLink}>
-                    <IconButton size="large" color="inherit">
+                  <NavLink
+                    to="/contact"
+                    aria-label="Contact Me"
+                    className={classes.navLink}
+                  >
+                    <IconButton color="inherit">
                       <Typography className={classes.topog}>Email</Typography>
                       <Mail className={classes.iconLink} />
                     </IconButton>
                   </NavLink>
 
                   <Link
+                    aria-label="LinkedIn"
                     className={classes.navLink}
                     href="https://www.linkedin.com/in/darren-glew/"
                     target="_blank"
                     rel="noreferrer"
                   >
-                    <IconButton size="large">
+                    <IconButton>
                       <Typography className={classes.linkTopog}>
                         LinkedIn
                       </Typography>
@@ -97,12 +102,13 @@ export default function Footer(props) {
                     </IconButton>
                   </Link>
                   <Link
+                    aria-label="Git-Hub"
                     className={classes.navLink}
                     href="https://github.com/DGlew-p"
                     target="_blank"
                     rel="noreferrer"
                   >
-                    <IconButton size="large">
+                    <IconButton>
                       <Typography className={classes.linkTopog}>Git</Typography>
                       <GitHub className={classes.iconLink} />
                     </IconButton>
@@ -114,7 +120,7 @@ export default function Footer(props) {
                     target="_blank"
                     rel="noreferrer"
                   >
-                    <IconButton size="large" aria-label="">
+                    <IconButton aria-label="Resume">
                       <Typography className={classes.linkTopog}>
                         C.V.
                       </Typography>

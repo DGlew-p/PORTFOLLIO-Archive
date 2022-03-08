@@ -3,15 +3,14 @@ module.exports = {
   create,
 };
 
-var transport = {
+let transport = {
   host: "smtp.gmail.com",
   auth: {
     user: process.env.USER,
     pass: process.env.PASS,
   },
 };
-
-var transporter = nodemailer.createTransport(transport);
+let transporter = nodemailer.createTransport(transport);
 
 transporter.verify((error, success) => {
   if (error) {

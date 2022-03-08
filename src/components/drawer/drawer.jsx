@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import {
+  Typography,
   Drawer,
   IconButton,
   List,
@@ -8,7 +9,8 @@ import {
   makeStyles,
 } from "@material-ui/core";
 import { NavLink } from "react-router-dom";
-import { HistoryEdu, GitHub, LinkedIn, Menu, Mail } from "@mui/icons-material";
+import { HistoryEdu, GitHub, LinkedIn, Mail } from "@mui/icons-material";
+import ConnectWithoutContactIcon from "@mui/icons-material/ConnectWithoutContact";
 import CVPdf from "../../assets/img/CDPdf.pdf";
 import { grey } from "@mui/material/colors";
 
@@ -35,29 +37,8 @@ function DrawerComponent() {
         <List>
           <ListItem onClick={() => setOpenDrawer(false)}>
             <ListItemText>
-              <NavLink to="/about" className={classes.NavLink}>
-                About Me
-              </NavLink>
-            </ListItemText>
-          </ListItem>
-          <ListItem onClick={() => setOpenDrawer(false)}>
-            <ListItemText>
-              <NavLink to="/portfolio" className={classes.NavLink}>
-                Portfolio{" "}
-              </NavLink>
-            </ListItemText>
-          </ListItem>
-          <ListItem onClick={() => setOpenDrawer(false)}>
-            <ListItemText>
-              <NavLink to="/skills" className={classes.NavLink}>
-                Skills
-              </NavLink>
-            </ListItemText>
-          </ListItem>
-          <ListItem onClick={() => setOpenDrawer(false)}>
-            <ListItemText>
               <NavLink to="/contact" className={classes.NavLink}>
-                <IconButton size="large" color="inherit">
+                <IconButton color="inherit">
                   <Mail />
                 </IconButton>
               </NavLink>
@@ -70,29 +51,33 @@ function DrawerComponent() {
             rel="noreferrer"
           >
             <ListItem onClick={() => setOpenDrawer(false)}>
-              <IconButton size="large" aria-label="LinkedIn" color="inherit">
+              <IconButton aria-label="LinkedIn" color="inherit">
                 <LinkedIn className={classes.icon} />
               </IconButton>
             </ListItem>
           </a>
           <a href="https://github.com/DGlew-p" target="_blank" rel="noreferrer">
             <ListItem onClick={() => setOpenDrawer(false)}>
-              <IconButton size="large" aria-label="Git-Hub" color="inherit">
+              <IconButton aria-label="Git-Hub" color="inherit">
                 <GitHub className={classes.icon} />
               </IconButton>
             </ListItem>
           </a>
           <a href={CVPdf} target="_blank" rel="noreferrer">
             <ListItem onClick={() => setOpenDrawer(false)}>
-              <IconButton size="large" aria-label="CV" color="inherit">
+              <IconButton aria-label="CV" color="inherit">
                 <HistoryEdu className={classes.icon} />
               </IconButton>
             </ListItem>
           </a>
         </List>
       </Drawer>
-      <IconButton onClick={() => setOpenDrawer(!openDrawer)}>
-        <Menu className={classes.menuIcon} />
+      <IconButton
+        onClick={() => setOpenDrawer(!openDrawer)}
+        aria-label="CV"
+        color="inherit"
+      >
+        <ConnectWithoutContactIcon />
       </IconButton>
     </>
   );
