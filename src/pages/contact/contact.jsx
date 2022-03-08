@@ -34,7 +34,6 @@ export default class Contact extends React.Component {
       errorCount: null,
       hideDialog: true,
       emailSuccess: null,
-      axiosResponse: null,
 
       errors: {
         name: "Enter your name",
