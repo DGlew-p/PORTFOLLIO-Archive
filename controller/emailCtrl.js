@@ -30,7 +30,7 @@ async function create(req, res) {
     const ejs = require("ejs");
 
     ejs.renderFile(
-      __dirname + "/public/emailTemp.ejs",
+      __dirname + "/emailTemp.ejs",
       { name: name, email: email, message: message },
       function (err, data) {
         if (err) {
