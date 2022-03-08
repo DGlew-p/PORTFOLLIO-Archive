@@ -3,7 +3,7 @@ import React from "react";
 import EmailGood from "../../components/emailMsg/emailgood";
 import EmailBad from "../../components/emailMsg/emailbad";
 import EmailDefault from "../../components/emailMsg/emaildefault";
-import axios from "axios";
+
 import {
   Button,
   TextField,
@@ -47,25 +47,33 @@ export default class Contact extends React.Component {
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
-  handleSubmit = (event) => {
+  handleSubmit = async (event) => {
+    event.preventDefault();
     this.setState({
       loading: true,
     });
 
-    axios
-      .post("/send", {
-        name: this.state.name,
-        email: this.state.email,
-        messageHtml: this.state.message,
-      })
-      .then(() => {
-        this.emailSuccess();
-        this.resetForm();
-      })
-      .catch(() => {
-        this.emailBad();
-        this.resetForm();
+    try {
+      const fetchResponse = await fetch("/route/send", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: "Bearer ",
+        },
+        body: JSON.stringify({
+          name: this.state.name,
+          email: this.state.email,
+          messageHtml: this.state.message,
+        }),
       });
+
+      await fetchResponse.json();
+      this.emailSuccess();
+      this.resetForm();
+    } catch (err) {
+      this.emailBad();
+      this.resetForm();
+    }
   };
 
   handleChange(event) {
